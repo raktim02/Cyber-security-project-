@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SecureMyPass | Your Digital Security Starts Here</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/extra.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">🛡️</div>
+            <div>
+                <h2>SecureMyPass</h2>
+                <small>Version 2.1</small>
+            </div>
+        </div>
+
+        <p class="menu-label">MAIN MENU</p>
+
+        <nav class="navigation">
+
+            <a href="#overview" class="nav-link active">
+                <span>▦</span> Overview
+            </a>
+
+            <a href="#password" class="nav-link">
+                <span>🔐</span> Password Security
+            </a>
+
+            <a href="#generator" class="nav-link">
+                <span>⚙</span> Password Generator
+            </a>
+
+            <a href="#url-checker" class="nav-link">
+                <span>🛡</span> URL Analyzer
+            </a>
+
+            <a href="#checklist" class="nav-link">
+                <span>☑</span> Security Checklist
+            </a>
+
+            <a href="#quiz" class="nav-link">
+                <span>🧠</span> Security Quiz
+            </a>
+
+            <a href="#awareness" class="nav-link">
+                <span>📚</span> Awareness Center
+            </a>
+
+            <a href="#history" class="nav-link">
+                <span>📋</span> Scan History
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>Stay Safe Online</p>
+            <small>CyberShield Security Toolkit</small>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button id="menuToggle" class="icon-btn">☰</button>
+
+                <div>
+                    <h2>Security Dashboard</h2>
+                    <p>Monitor your digital safety</p>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+
+                <span class="security-status">
+                    ● Protection Tools Ready
+                </span>
+
+                <button id="themeToggle" class="icon-btn">
+                    ☀
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- OVERVIEW -->
+        <section id="overview" class="page-section">
+
+            <div class="welcome-section">
+                <div>
+                    <span class="section-tag">CYBERSECURITY CENTER</span>
+
+                    <h1>Stay Protected in the Digital World.</h1>
+
+                    <p>
+                        Analyze passwords, inspect suspicious links
+                        and improve your online security.
+                    </p>
+                </div>
+
+                <div class="welcome-icon">🛡️</div>
+            </div>
+
+
+            <!-- STATISTICS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <span>Total URL Scans</span>
+                    <h2 id="totalScans">0</h2>
+                    <small>Scans in this browser</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>Suspicious Results</span>
+                    <h2 id="warningScans">0</h2>
+                    <small>Flagged by heuristic checks</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>Passwords Generated</span>
+                    <h2 id="generatedCount">0</h2>
+                    <small>Generated on this browser</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>Checklist Progress</span>
+                    <h2 id="checkProgress">0%</h2>
+                    <small>Security tasks completed</small>
+                </div>
+
+            </div>
+
+
+            <!-- CHART -->
+            <div class="content-card chart-card">
+
+                <div class="card-heading">
+                    <div>
+                        <h3>Security Activity</h3>
+                        <p>Your recent URL scan activity</p>
+                    </div>
+                </div>
+
+                <canvas id="securityChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+        <!-- PASSWORD SECURITY -->
+        <section id="password" class="page-section">
+
+            <div class="section-heading">
+                <span class="section-tag">PASSWORD PROTECTION</span>
+                <h2>Password Security Analyzer</h2>
+                <p>Check password strength and get improvement suggestions.</p>
+            </div>
+
+            <div class="content-card">
+
+                <label for="passwordInput">Enter a test password</label>
+
+                <div class="input-row">
+                    <input
+                        type="password"
+                        id="passwordInput"
+                        placeholder="Enter password to analyze"
+                    >
+
+                    <button id="togglePassword" class="secondary-btn">
+                        Show
+                    </button>
+                </div>
+
+                <div class="strength-track">
+                    <div id="strengthBar"></div>
+                </div>
+
+                <h3 id="strengthText">Not Analyzed</h3>
+
+                <div id="passwordFeedback"></div>
+
+                <p class="privacy-note">
+                    Privacy: Your tested password is analyzed in your browser
+                    and should never be stored or shared.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PASSWORD GENERATOR -->
+        <section id="generator" class="page-section">
+
+            <div class="section-heading">
+                <span class="section-tag">SECURE PASSWORD</span>
+                <h2>Password Generator</h2>
+                <p>Create a strong random password.</p>
+            </div>
+
+            <div class="content-card">
+
+                <label for="passwordLength">
+                    Password Length:
+                    <strong id="lengthValue">16</strong>
+                </label>
+
+                <input
+                    type="range"
+                    id="passwordLength"
+                    min="8"
+                    max="64"
+                    value="16"
+                >
+
+                <div class="options-grid">
+
+                    <label>
+                        <input type="checkbox" id="uppercase" checked>
+                        Uppercase
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="lowercase" checked>
+                        Lowercase
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="numbers" checked>
+                        Numbers
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="symbols" checked>
+                        Symbols
+                    </label>
+
+                </div>
+
+                <button id="generateBtn" class="primary-btn">
+                    Generate Password
+                </button>
+
+                <div class="input-row generator-output">
+                    <input
+                        type="text"
+                        id="generatedPassword"
+                        placeholder="Generated password"
+                        readonly
+                    >
+
+                    <button id="copyPassword" class="secondary-btn">
+                        Copy
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- URL ANALYZER -->
+        <section id="url-checker" class="page-section">
+
+            <div class="section-heading">
+                <span class="section-tag">WEB PROTECTION</span>
+                <h2>Phishing URL Analyzer</h2>
+                <p>Inspect suspicious URL characteristics before visiting.</p>
+            </div>
+
+            <div class="content-card">
+
+                <label for="urlInput">Website URL</label>
+
+                <div class="input-row">
+
+                    <input
+                        type="text"
+                        id="urlInput"
+                        placeholder="https://example.com"
+                    >
+
+                    <button id="scanUrlBtn" class="primary-btn">
+                        Analyze URL
+                    </button>
+
+                </div>
+
+                <div id="urlResult" class="result-box"></div>
+
+                <p class="privacy-note">
+                    This tool uses basic URL heuristics, not a live
+                    malware or phishing database. A clean result
+                    does not guarantee that a website is safe.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHECKLIST -->
+        <section id="checklist" class="page-section">
+
+            <div class="section-heading">
+                <span class="section-tag">DAILY PROTECTION</span>
+                <h2>Security Checklist</h2>
+                <p>Complete essential security practices.</p>
+            </div>
+
+            <div class="content-card">
+
+                <div class="checklist-progress">
+                    <span id="checklistLabel">0% Completed</span>
+
+                    <div class="strength-track">
+                        <div id="checklistBar"></div>
+                    </div>
+                </div>
+
+                <div id="checklistItems"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+        <section id="quiz" class="page-section">
+
+            <div class="section-heading">
+                <span class="section-tag">TEST YOUR KNOWLEDGE</span>
+                <h2>Cybersecurity Quiz</h2>
+                <p>Test your knowledge about online security.</p>
+            </div>
+
+            <div class="content-card">
+
+                <div id="quizArea">
+                    <h3>Ready to test your knowledge?</h3>
+
+                    <p>Answer cybersecurity questions and see your score.</p>
+
+                    <button id="startQuiz" class="primary-btn">
+                        Start Quiz
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AWARENESS -->
+        <section id="awareness" class="page-section">
+
+            <div class="section-heading">
+                <span class="section-tag">LEARN & PROTECT</span>
+                <h2>Security Awareness Center</h2>
+                <p>Learn about common cyber threats and prevention.</p>
+            </div>
+
+            <div class="awareness-grid">
+
+                <article class="content-card">
+                    <h3>🎣 Phishing</h3>
+                    <p>
+                        Fake messages or websites designed to steal
+                        sensitive information.
+                    </p>
+                    <strong>Prevention:</strong>
+                    <p>Verify senders and avoid suspicious links.</p>
+                </article>
+
+                <article class="content-card">
+                    <h3>🦠 Malware</h3>
+                    <p>
+                        Malicious software that can damage devices
+                        or access information.
+                    </p>
+                    <strong>Prevention:</strong>
+                    <p>Use trusted software and keep devices updated.</p>
+                </article>
+
+                <article class="content-card">
+                    <h3>🔒 Ransomware</h3>
+                    <p>
+                        Malware that locks or encrypts files
+                        and demands payment.
+                    </p>
+                    <strong>Prevention:</strong>
+                    <p>Keep offline backups and avoid unknown attachments.</p>
+                </article>
+
+                <article class="content-card">
+                    <h3>🔑 Two-Factor Authentication</h3>
+                    <p>
+                        An extra verification step to protect your accounts.
+                    </p>
+                    <strong>Prevention:</strong>
+                    <p>Enable 2FA and use an authenticator app where possible.</p>
+                </article>
+
+                <article class="content-card">
+                    <h3>🌐 Safe Browsing</h3>
+                    <p>
+                        Safe practices while visiting websites
+                        and using online services.
+                    </p>
+                    <strong>Prevention:</strong>
+                    <p>Check domains and avoid suspicious downloads.</p>
+                </article>
+
+                <article class="content-card">
+                    <h3>🛡️ Privacy Protection</h3>
+                    <p>
+                        Protect personal information and digital identity.
+                    </p>
+                    <strong>Prevention:</strong>
+                    <p>Limit public information and review privacy settings.</p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- HISTORY -->
+        <section id="history" class="page-section">
+
+            <div class="section-heading">
+                <span class="section-tag">YOUR ACTIVITY</span>
+                <h2>Scan History</h2>
+                <p>Review previous URL analysis results saved in this browser.</p>
+            </div>
+
+            <div class="content-card">
+
+                <div class="card-heading">
+                    <h3>Recent URL Scans</h3>
+
+                    <button id="clearHistory" class="danger-btn">
+                        Clear History
+                    </button>
+                </div>
+
+                <div id="historyList"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+    <p>© 2026 SecureMyPass. All Rights Reserved.</p>
+    <p>Developed by <strong>Raktim Sutradhar</strong></p>
+    <p>Your Digital Security Starts Here.</p>
+</footer>
+    </main>
+
+</div>
+
+<script src="js/script.js"></script>
+<script src="js/checklist.js"></script>
+<script src="js/quiz.js"></script>
+
+</body>
+</html>
